@@ -25,3 +25,8 @@ composer require twig
 composer require symfony/expression-language;
 ```
 
+6. THe Doctrine ORM
+```php
+composer require symfony/orm-pack
+composer require --dev symfony/maker-bundle
+``` 
