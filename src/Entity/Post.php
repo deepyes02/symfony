@@ -16,6 +16,15 @@ class Post
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $title;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $author;
+
+    #[ORM\Column(type: 'datetime')]
+    private $created;
+
+    #[ORM\Column(type: 'string', length: 125, unique:true)]
+    private $slug;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -29,6 +38,42 @@ class Post
     public function setTitle(?string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?string
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(string $author): self
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    public function getCreated(): ?\DateTimeInterface
+    {
+        return $this->created;
+    }
+
+    public function setCreated(\DateTimeInterface $created): self
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }
