@@ -54,3 +54,8 @@ php bin/console doctrine:migrations:migrate
 ```php
 composer require symfony/validator doctrine/annotations
 ```
+
+12. UPDATE mysql schema
+```php
+php bin/console doctrine:migrations:execute
+```

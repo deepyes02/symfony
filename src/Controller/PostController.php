@@ -16,7 +16,7 @@ class PostController extends AbstractController
 	public function create_product(ManagerRegistry $doctrine, ValidatorInterface $validator): Response
 	{
 		$post = new Post();
-		$post->setTitle('Hello from Symfony');
+		$post->setTitle('');
 		$post->setAuthor('Radhika Ghimire');
 		$post->setCreated(new DateTime('now'));
 		$post->setSlug($this->create_slug($post->getTitle()));
@@ -24,15 +24,16 @@ class PostController extends AbstractController
 		// tell Doctrine you want to (eventually) save the Product (no queries yet)
 		$entityManager = $doctrine->getManager();
 		$entityManager->persist($post);
-
+		// sql inser
+		$entityManager->flush();
 
 		$errors = $validator->validate($post);
 		if (count($errors) > 0) {
-			$errorsString = (string) $errors;
-			return new Response($errorsString);
+			return $this->render('author/validation.html.twig', [
+				'errors' => $errors,
+			]);
 		}
-		// sql inser
-		$entityManager->flush();
+
 
 		return new Response('Inserted post with id ' . $post->getId() . '.');
 	}
