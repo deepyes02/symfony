@@ -19,3 +19,9 @@ composer require annotations
 ```php
 composer require twig
 ```
+
+5. Install expression lanugage that appears above route in annotation
+```php
+composer require symfony/expression-language;
+```
+
